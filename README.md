@@ -9,11 +9,11 @@ Welcome to the Services Team Web Components GitHub repository! This repository s
 - [Contributing](#contributing)
 - [Contact](#contact)
 
-## General Information
+## General Information {#general-information}
 
 The Services Team Web Components Repository is designed to streamline the management of CSS and JS libraries across multiple client projects. By consolidating our codebase on GitHub, we ensure a unified and efficient workflow for maintaining and updating web components.
 
-## Repository Structure
+## Repository Structure {#repository-structure}
 
 ### General Libraries
 
@@ -25,13 +25,13 @@ The Services Team Web Components Repository is designed to streamline the manage
 - **css/client1_es.css, css/client2_es.css, ... :** Client-specific CSS libraries.
 - **js/client1_es.js, js/client2_es.js, ... :** Client-specific JavaScript libraries.
 
-## Contributing
+## Contributing {#contributing}
 
 As the Services Team, only authorized team members can contribute to this repository. If you have suggestions, bug reports, or feature requests, please contact the team lead.
 
-##Contact
+## Contact {#contact}
 
 For any inquiries or assistance, please reach out to the Services Team lead:
 
-Team Lead: Jhonatan Vargas
-Email: jvargas@pros.com
+- **Team Lead:** Jhonatan Vargas
+- **Email:** jvargas@pros.com
