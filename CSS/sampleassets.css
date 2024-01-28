@@ -23,6 +23,7 @@
   align-items: stretch;
 }
 a.navbtn_es, button.ctabtn_es {
+  outline: none;
   text-align: center;
   font-size: 20px !important;
   display: block;
