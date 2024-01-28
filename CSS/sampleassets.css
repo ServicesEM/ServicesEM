@@ -1,5 +1,6 @@
 /*Full-Width Image Styles*/
 .fullwidth_es {
+  max-width: inherit;
   width: 100vw;
   position: relative;
   margin: auto -50vw;
