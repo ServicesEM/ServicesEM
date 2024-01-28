@@ -34,7 +34,7 @@
     color: var(--btn-textcolor)!important;
     font-size: inherit;
 }
-.F8accordion:hover:after {
+.F8accordion.active:after, .F8accordion:hover:after {
     color: var(--base-textcolor)!important;
     font-size: inherit;
 }
