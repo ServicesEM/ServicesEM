@@ -1,0 +1,41 @@
+:root {
+    --color-primary: #00146e;
+    --color-secondary: #0f2356;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #333333;
+}
+/*Nav Button*/
+.NHbtn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+}
+.NHbtn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+/*Accordion Styles*/
+.NHaccordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.NHaccordion.active,
+.NHaccordion:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    background: var(--color-secondary);
+    border: none;
+}
+.NHaccordion:after,
+.NHaccordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.NHanchor_es a,
+.NHanchor_es {color: var(--color-primary)!important;}
+.NHanchor_es:hover a,
+.NHanchor_es:hover {color: var(--color-secondary)!important;}

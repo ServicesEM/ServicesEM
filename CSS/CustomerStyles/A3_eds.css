@@ -1,0 +1,41 @@
+:root {
+    --color-primary: #416bf6;
+    --color-secondary: #345adb;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #002677;
+}
+/*Nav Button*/
+.A3btn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 30px;
+}
+.A3btn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+    box-shadow: 1px solid rgba(255, 255, 255, 0);
+}
+/*Accordion Styles*/
+.A3accordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.A3accordion.active,
+.A3accordion:hover {
+    box-shadow: 1px solid rgba(255, 255, 255, 0);
+    background: var(--color-secondary);
+    border: none;
+}
+.A3accordion:after,
+.A3accordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.A3anchor_es a,
+.A3anchor_es {color: var(--color-primary)!important;}
+.A3anchor_es:hover a,
+.A3anchor_es:hover {color: var(--color-secondary)!important;}

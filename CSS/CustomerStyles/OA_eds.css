@@ -1,0 +1,39 @@
+:root {
+    --color-primary: #00a540;
+    --color-secondary: #09bc1c;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #0f1248;
+}
+/*Nav Button*/
+.OAbtn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 24px;
+}
+.OAbtn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+}
+/*Accordion Styles*/
+.OAaccordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.OAaccordion.active,
+.OAaccordion:hover {
+    background: var(--color-secondary);
+    border: none;
+}
+.OAaccordion:after,
+.OAaccordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.OAanchor_es a,
+.OAanchor_es {color: var(--color-primary)!important;}
+.OAanchor_es:hover a,
+.OAanchor_es:hover {color: var(--color-secondary)!important;}

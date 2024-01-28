@@ -1,0 +1,41 @@
+:root {
+    --color-primary: #c6007e;
+    --color-secondary: #d74da5;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #343434;
+}
+/*Nav Button*/
+.W6btn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+}
+.W6btn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+}
+/*Accordion Styles*/
+.W6accordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.W6accordion.active,
+.W6accordion:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    background: var(--color-secondary);
+    border: none;
+}
+.W6accordion:after,
+.W6accordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.W6anchor_es a,
+.W6anchor_es {color: var(--color-primary)!important;}
+.W6anchor_es:hover a,
+.W6anchor_es:hover {color: var(--color-secondary)!important;}

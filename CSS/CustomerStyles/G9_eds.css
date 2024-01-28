@@ -1,0 +1,41 @@
+:root {
+    --color-primary: #FF0041;
+    --color-secondary: #C20F41;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #000000;
+}
+/*Nav Button*/
+.G9btn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 0px;
+}
+.G9btn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+}
+/*Accordion Styles*/
+.G9accordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.G9accordion.active,
+.G9accordion:hover {
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
+    background: var(--color-secondary);
+    border: none;
+}
+.G9accordion:after,
+.G9accordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.G9anchor_es a,
+.G9anchor_es {color: var(--color-primary)!important;}
+.G9anchor_es:hover a,
+.G9anchor_es:hover {color: var(--color-secondary)!important;}
