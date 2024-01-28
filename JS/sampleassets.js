@@ -1,5 +1,5 @@
 //Accordion Script
-document.addEventListener("DOMContentLoaded", function (e) {
+document.addEventListener("DOMContentLoaded", function () {
     var accordions = document.querySelectorAll(".emaccordion");
     accordions.forEach(function (accordion) {
         accordion.addEventListener("click", function () {
