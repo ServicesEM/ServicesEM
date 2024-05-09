@@ -2,14 +2,14 @@
     --color-primary: #4b7d6b;
     --color-secondary: #ffffff;
     --btn-textcolor: #ffffff;
-    --base-textcolor: #002677;
+    --base-textcolor: #000000;
 }
 /*Nav Button*/
 .BRbtn_es {
     color: var(--btn-textcolor)!important;
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
-    border-radius: 30px;
+    border-radius: 3px;
 }
 .BRbtn_es:hover {
     color: var(--color-primary)!important;
@@ -28,10 +28,9 @@
     box-shadow: 1px solid rgba(255, 255, 255, 0);
     background: var(--color-secondary);
     color: var(--color-primary)!important;
-    border: none;
+    border: 1px solid var(--color-primary);
 }
-.BRaccordion:after,
-.BRaccordion.active:after {
+.BRaccordion.active::after {
     color: var(--color-primary)!important;
     font-size: inherit;
 }
