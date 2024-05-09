@@ -19,7 +19,7 @@
 }
 /*Accordion Styles*/
 .JXaccordion {
-    background-color: var(--color-primary);
+    background-color: var(--color-primary)!important;
     color: var(--btn-textcolor) !important;
     cursor: pointer !important;
 }
