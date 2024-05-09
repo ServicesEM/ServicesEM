@@ -1,0 +1,42 @@
+:root {
+    --color-primary: #7E7267;
+    --color-secondary: #f8c68ad9;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #000000;
+}
+/*Nav Button*/
+.JXbtn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 8px;
+}
+.JXbtn_es:hover {
+    color: var(--base-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+    box-shadow: 1px solid rgba(255, 255, 255, 0);
+}
+/*Accordion Styles*/
+.JXaccordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.JXaccordion.active,
+.JXaccordion:hover {
+    box-shadow: 1px solid rgba(255, 255, 255, 0);
+    background: var(--color-secondary);
+    color: var(--base-textcolor)!important;
+    border: none;
+}
+.JXaccordion:hover::after,
+.JXaccordion.active::after {
+    color: var(--base-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.JXanchor_es a,
+.JXanchor_es {color: var(--btn-textcolor)!important;}
+.JXanchor_es:hover a,
+.JXanchor_es:hover {color: var(--btn-textcolor)!important;}
