@@ -15,7 +15,7 @@
 }
 /*Nav & CTA Buttons Styles*/
 .btnscontainer {
-  display: flex;
+  display: flex!important;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
