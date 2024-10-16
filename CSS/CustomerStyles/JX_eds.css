@@ -10,6 +10,7 @@
     background: var(--color-primary);
     border: 1px solid var(--color-primary);
     border-radius: 8px;
+    padding: 5px 30px!important;
 }
 .JXbtn_es:hover {
     color: var(--base-textcolor)!important;
@@ -17,6 +18,7 @@
     border: 1px solid var(--color-secondary)!important;
     box-shadow: 1px solid rgba(255, 255, 255, 0);
 }
+
 /*Accordion Styles*/
 .JXaccordion {
     background-color: var(--color-primary)!important;
