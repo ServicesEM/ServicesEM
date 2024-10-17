@@ -23,7 +23,7 @@
   })(window);
     PaymentObserver.observeFooterChanges(
     'footer#footer > .footer',
-    'footer#footer > .footer > div:nth-child(1)',
+    'footer#footer > .footer > div:nth-child(1) > div:nth-child(1)',
     `
       <div class="paymentsection">
         <div class="paymentlogos">
