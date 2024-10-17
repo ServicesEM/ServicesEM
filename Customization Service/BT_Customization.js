@@ -1,30 +1,9 @@
-(function(global) {
-    function insertPaymentSection(selector, targetSelector, htmlContent) {
-      const targetSection = document.querySelector(targetSelector);
-      if (targetSection) {targetSection.insertAdjacentHTML('beforeend', htmlContent);}
-    }
-    function observeFooterChanges(footerSelector, targetSelector, htmlContent, rootElement) {
-      const observer = new MutationObserver((mutationsList, observer) => {
-        for (const mutation of mutationsList) {
-          if (mutation.type === 'childList') {
-            const footerElement = document.querySelector(footerSelector);
-            if (footerElement) {
-              insertPaymentSection(footerSelector, targetSelector, htmlContent);
-              observer.disconnect();
-              break;
-            }
-          }
-        }
-      });
-      const config = { childList: true, subtree: true };
-      observer.observe(rootElement || document.body, config);
-    }
-    global.PaymentObserver = {observeFooterChanges};
-  })(window);
-    PaymentObserver.observeFooterChanges(
-    'footer#footer > .footer',
-    'footer#footer > .footer > div:nth-child(1) > div:nth-child(1)',
-    `
+function insertPaymentSection() {
+  const footerSection = document.querySelector('footer#footer > .footer > div:nth-child(1) div.pb-2.px-3');
+  const existingPaymentSection = document.querySelector('.paymentsection');
+  
+  if (footerSection && !existingPaymentSection) {
+    const paymentHTML = `
       <div class="paymentsection">
         <div class="paymentlogos">
           <img src="https://a.storyblok.com/f/260755/193x150/cb9153c35f/master-card.svg" alt="Mastercard logo">
@@ -40,5 +19,33 @@
         </div>
         <a href="https://www.airbaltic.com/en/before-you-fly/payment-options" target="_blank" rel="noopener noreferrer"></a>
       </div>
-    `
-  );
+    `;
+    footerSection.insertAdjacentHTML('beforeend', paymentHTML);
+  }
+}
+
+function observeDOMChanges() {
+  const observer = new MutationObserver((mutationsList) => {
+    for (const mutation of mutationsList) {
+      if (mutation.type === 'childList') {
+        const footerElement = document.querySelector('footer#footer > .footer');
+        if (footerElement) {
+          insertPaymentSection();
+          observer.disconnect();
+        }
+      }
+    }
+  });
+
+  const config = { childList: true, subtree: true };
+  observer.observe(document.body, config);
+}
+
+if (document.readyState === 'complete' || document.readyState === 'interactive') {
+  insertPaymentSection();
+} else {
+  document.addEventListener('DOMContentLoaded', () => {
+    insertPaymentSection();
+    observeDOMChanges();
+  });
+}
