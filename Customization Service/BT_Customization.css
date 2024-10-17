@@ -29,6 +29,7 @@
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
+    gap: 25px;
 }
 .paymentlogos img {max-width: 60px}
 .paymentsection a {
