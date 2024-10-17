@@ -1,0 +1,19 @@
+/*Booking Mask Full-Width*/
+@media only screen and (min-width: 1000px) {
+    .FlightsBooking {height: 650px;}
+    .FlightsBooking.w-full.max-w-full.lg\:max-w-6xl.self-center {height: 100%!important;}
+    .FlightsBooking .bg-cover.bg-no-repeat {height: 465px;position: relative;}
+    .FlightsBooking.self-center .px-3.py-4 .bg-cover.bg-no-repeat {height: 100%!important;}
+    .FlightsBooking .bg-cover.bg-no-repeat > div {position: absolute;}
+    .FlightsBooking.self-center .px-3.py-4 .bg-cover.bg-no-repeat > div {position: initial!important;}
+    .FlightsBooking .FareTitleHeader {
+        bottom: 0;
+        right: 0;
+        left: 0;
+    }
+    .FlightsBooking .BookingMask {
+        left: 0;
+        right: 0;
+        bottom: -165px;
+    }
+}
