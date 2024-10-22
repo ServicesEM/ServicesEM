@@ -2,8 +2,8 @@ name: Update JSON from Google Sheets
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Ejecutar todos los días a la medianoche
-  workflow_dispatch:    # Permite ejecución manual
+    - cron: '0 0 * * *'
+  workflow_dispatch:
 
 jobs:
   update-json:
@@ -18,9 +18,12 @@ jobs:
           curl -L "https://drive.google.com/uc?export=download&id=1EDuhf-T6rob5vbprXxEmZSOC_Lu_Ff9y" -o JS/JsonTest.json
 
       - name: Commit and push changes
+        env:
+          TOKEN: ${{ secrets.ACTIONS_PAT }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add JS/JsonTest.json
           git commit -m "Update JSON from Google Sheets"
-          git push
+          git remote set-url origin https://x-access-token:${TOKEN}@github.com/ServicesEM/ServicesEM.git
+          git push origin main
