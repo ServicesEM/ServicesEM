@@ -5,7 +5,6 @@
      */
     function initializeAccordions() {
         console.log("Initializing accordions...");
-
         const accordions = document.querySelectorAll(".emaccordion");
         if (accordions.length === 0) {
             console.warn("No accordions found in the DOM.");
@@ -49,11 +48,36 @@
         });
     }
 
-    // Check the DOM state and initialize accordingly
+    /**
+     * Observa los cambios en el DOM y ejecuta la inicialización cuando los acordeones estén disponibles.
+     */
+    function observeAccordions() {
+        const observer = new MutationObserver((mutations, observerInstance) => {
+            const accordions = document.querySelectorAll(".emaccordion");
+            if (accordions.length > 0) {
+                console.log("Accordions detected in the DOM. Initializing...");
+                observerInstance.disconnect();
+                initializeAccordions();
+            }
+        });
+
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    // Verifica el estado del DOM y actúa en consecuencia
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeAccordions);
+        console.log("DOM still loading. Adding MutationObserver...");
+        observeAccordions();
     } else {
-        console.log("DOM already loaded. Initializing accordions...");
-        initializeAccordions();
+        console.log("DOM already loaded. Checking for accordions...");
+        const accordions = document.querySelectorAll(".emaccordion");
+        if (accordions.length > 0) {
+            initializeAccordions();
+        } else {
+            observeAccordions();
+        }
     }
 })();
