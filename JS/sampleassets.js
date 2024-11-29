@@ -11,37 +11,44 @@
 
             function initializeAccordions() {
                 console.log("Inicializando comportamiento de los acordeones...");
-                accordions.forEach(function (accordion) {
-                    console.log("Añadiendo eventos al acordeón:", accordion);
+                accordions.forEach(function (accordion, index) {
+                    console.log(`Añadiendo eventos al acordeón ${index + 1}:`, accordion);
 
                     accordion.addEventListener("click", function () {
-                        console.log("Acordeón clickeado:", this);
-                        const panel = this.nextElementSibling;
-                        const isOpen = this.getAttribute("aria-expanded") === "true";
-                        console.log(`Estado actual del acordeón: ${isOpen ? "Abierto" : "Cerrado"}`);
+                        console.log(`Acordeón ${index + 1} clickeado:`, this);
 
-                        accordions.forEach(function (acc) {
+                        const panel = this.nextElementSibling;
+                        if (!panel) {
+                            console.error(`Panel no encontrado para el acordeón ${index + 1}. Verifica el HTML.`);
+                            return;
+                        }
+
+                        const isOpen = this.getAttribute("aria-expanded") === "true";
+                        console.log(`Estado actual del acordeón ${index + 1}: ${isOpen ? "Abierto" : "Cerrado"}`);
+
+                        accordions.forEach(function (acc, i) {
                             acc.setAttribute("aria-expanded", "false");
                             acc.classList.remove("active");
                             const siblingPanel = acc.nextElementSibling;
                             if (siblingPanel) {
                                 siblingPanel.classList.remove("show");
-                                console.log("Cerrando panel:", siblingPanel);
+                                console.log(`Cerrando panel del acordeón ${i + 1}:`, siblingPanel);
                             }
                         });
 
                         if (!isOpen) {
-                            console.log("Abriendo acordeón:", this);
+                            console.log(`Abriendo acordeón ${index + 1}:`, this);
                             this.setAttribute("aria-expanded", "true");
                             this.classList.add("active");
                             panel.classList.add("show");
+                            console.log(`Panel del acordeón ${index + 1} ahora tiene la clase "show":`, panel);
                         }
                     });
 
                     accordion.addEventListener("keydown", function (event) {
                         if (event.key === "Enter" || event.key === " ") {
                             event.preventDefault();
-                            console.log("Tecla presionada en acordeón:", event.key);
+                            console.log(`Tecla presionada en el acordeón ${index + 1}:`, event.key);
                             this.click();
                         }
                     });
