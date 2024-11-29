@@ -2,7 +2,7 @@
 (function () {
     function initializeAccordions() {
         const accordions = document.querySelectorAll(".emaccordion");
-        if (accordions.length === 0) return;
+        if (!accordions.length) return;
 
         accordions.forEach(accordion => {
             accordion.addEventListener("click", function () {
@@ -34,9 +34,25 @@
         });
     }
 
+    function observeAccordions() {
+        const observer = new MutationObserver((_, observerInstance) => {
+            const accordions = document.querySelectorAll(".emaccordion");
+            if (accordions.length) {
+                observerInstance.disconnect();
+                initializeAccordions();
+            }
+        });
+
+        observer.observe(document.body, { childList: true, subtree: true });
+    }
+
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", initializeAccordions);
+        document.addEventListener("DOMContentLoaded", () => {
+            initializeAccordions();
+            observeAccordions();
+        });
     } else {
         initializeAccordions();
+        observeAccordions();
     }
 })();
