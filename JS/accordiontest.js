@@ -1,4 +1,4 @@
-export function initAccordion(selector = ".emaccordion") {
+function initAccordion(selector = ".emaccordion") {
     const accordions = document.querySelectorAll(selector);
 
     accordions.forEach((accordion, index) => {
