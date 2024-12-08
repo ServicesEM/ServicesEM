@@ -1,5 +1,5 @@
 (function () {
-    // Función para inicializar los acordeones
+    // Función para inicializar los acordeones2
     function initializeAccordions() {
         const accordions = document.querySelectorAll(".emaccordion");
 
@@ -40,28 +40,6 @@
         panel.hidden = !open;
     }
 
-    // Función para observar cambios en el DOM y aplicar la funcionalidad a nuevos acordeones
-    function observeAccordions() {
-        const observer = new MutationObserver((mutationsList, observer) => {
-            const accordions = document.querySelectorAll(".emaccordion");
-            if (accordions.length) {
-                observer.disconnect();  // Detener la observación una vez que los acordeones se hayan encontrado
-                initializeAccordions();  // Inicializa acordeones
-            }
-        });
-
-        // Observar cambios en el body para detectar nuevos acordeones añadidos dinámicamente
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
-
-    // Verificar si el DOM ya está cargado o no
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            initializeAccordions();
-            observeAccordions();
-        });
-    } else {
-        initializeAccordions();
-        observeAccordions();
-    }
+    // Iniciar acordeones cuando el script se haya cargado
+    initializeAccordions();
 })();
