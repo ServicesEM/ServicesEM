@@ -1,58 +1,39 @@
-//Accordion Script
 (function () {
-    function initializeAccordions() {
-        const accordions = document.querySelectorAll(".emaccordion");
-        if (!accordions.length) return;
+    let initializedAccordions = new WeakSet();
 
-        accordions.forEach(accordion => {
+    function accordionSetup() {
+        const accordions = document.getElementsByClassName("emaccordion");
+        const panels = document.getElementsByClassName("empanel");
+
+        Array.from(accordions).forEach((accordion) => {
+            if (initializedAccordions.has(accordion)) return;
+
             accordion.addEventListener("click", function () {
-                const panel = this.nextElementSibling;
-                if (!panel) return;
+                const isActive = this.classList.contains("active");
+                toggleClasses(accordions, "active", "remove");
+                toggleClasses(panels, "show", "remove");
 
-                const isOpen = this.getAttribute("aria-expanded") === "true";
-
-                accordions.forEach(acc => {
-                    acc.setAttribute("aria-expanded", "false");
-                    acc.classList.remove("active");
-                    const siblingPanel = acc.nextElementSibling;
-                    if (siblingPanel) siblingPanel.classList.remove("show");
-                });
-
-                if (!isOpen) {
-                    this.setAttribute("aria-expanded", "true");
+                if (!isActive) {
                     this.classList.add("active");
-                    panel.classList.add("show");
+                    const panel = this.nextElementSibling;
+                    if (panel) panel.classList.add("show");
                 }
             });
 
-            accordion.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
-                    this.click();
-                }
-            });
+            initializedAccordions.add(accordion);
         });
     }
 
-    function observeAccordions() {
-        const observer = new MutationObserver((_, observerInstance) => {
-            const accordions = document.querySelectorAll(".emaccordion");
-            if (accordions.length) {
-                observerInstance.disconnect();
-                initializeAccordions();
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
+    function toggleClasses(elements, className, action) {
+        Array.from(elements).forEach((el) => el.classList[action](className));
     }
+
+    const observer = new MutationObserver(() => accordionSetup());
+    observer.observe(document.body, { childList: true, subtree: true });
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            initializeAccordions();
-            observeAccordions();
-        });
+        document.addEventListener("DOMContentLoaded", accordionSetup);
     } else {
-        initializeAccordions();
-        observeAccordions();
+        accordionSetup();
     }
 })();
