@@ -15,7 +15,7 @@
                 return;
             }
 
-            // Configuración inicial de acclesibilidad
+            // Configuración inicial de accesibilidad
             console.log(`Inicializando acordeón con índice ${index}:`, accordion);
             if (!accordion.hasAttribute("role")) {
                 accordion.setAttribute("role", "button");
