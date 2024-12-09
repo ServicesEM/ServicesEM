@@ -3,7 +3,7 @@
         const accordions = document.querySelectorAll(".emaccordion");
 
         if (!accordions.length) {
-            console.warn("No se encontraron elementos con la clase 'emaccordion'. Asegúrate de que los acordeones estén en el DOM.");
+            console.warn("No se encontraron elementos con la clase 'emaccordion'.");
             return;
         }
 
@@ -11,50 +11,50 @@
             const panel = accordion.nextElementSibling;
 
             if (!panel) {
-                console.error(`El acordeón con índice ${index} no tiene un panel asociado como su siguiente elemento.`);
+                console.error(`El acordeón con índice ${index} no tiene un panel asociado.`);
                 return;
             }
 
-            // Configuración inicial de accesibilidad
+            // Configuración inicial de acclesibilidad
             console.log(`Inicializando acordeón con índice ${index}:`, accordion);
-            accordion.setAttribute("role", "button");
-            accordion.setAttribute("aria-expanded", "false");
-            accordion.setAttribute("aria-controls", `panel-${index}`);
-            accordion.setAttribute("tabindex", "0");
+            if (!accordion.hasAttribute("role")) {
+                accordion.setAttribute("role", "button");
+                accordion.setAttribute("aria-expanded", "false");
+                accordion.setAttribute("aria-controls", `panel-${index}`);
+                accordion.setAttribute("tabindex", "0");
+                panel.setAttribute("id", `panel-${index}`);
+                panel.setAttribute("role", "region");
+                panel.setAttribute("hidden", "");
+            }
 
-            panel.setAttribute("id", `panel-${index}`);
-            panel.setAttribute("role", "region");
-            panel.setAttribute("hidden", "");
-
-            // Eventos para abrir y cerrar el acordeón
+            // Eventos para acordeón
             accordion.addEventListener("click", function () {
                 const isOpen = this.getAttribute("aria-expanded") === "true";
                 toggleAccordion(accordion, panel, !isOpen);
                 console.log(`El acordeón con índice ${index} fue ${!isOpen ? "abierto" : "cerrado"}.`);
             });
 
-            accordion.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    event.preventDefault();
+            accordion.addEventListener("keydown", function (e) {
+                if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
                     this.click();
-                    console.log(`El acordeón con índice ${index} fue activado por el teclado.`);
                 }
             });
         });
     }
 
-    // Función para alternar el estado del acordeón
-    function toggleAccordion(accordion, panel, open) {
-        accordion.setAttribute("aria-expanded", open);
-        panel.hidden = !open;
+    function toggleAccordion(accordion, panel, shouldOpen) {
+        accordion.setAttribute("aria-expanded", shouldOpen);
+        panel.hidden = !shouldOpen;
     }
 
-    function observeDynamicContent() {
+    // Observación del DOM para contenido dinámico
+    function observeAccordions() {
         const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
                 mutation.addedNodes.forEach((node) => {
                     if (node.nodeType === Node.ELEMENT_NODE && node.matches(".emaccordion")) {
-                        console.log("Se detectó un nuevo acordeón dinámico en el DOM:", node);
+                        console.log("Se detectó un nuevo acordeón dinámico:", node);
                         initializeAccordions();
                     }
                 });
@@ -65,16 +65,16 @@
         console.log("Observando cambios en el DOM para contenido dinámico.");
     }
 
-    // Inicialización principal
+    // Verificación del estado del DOM
     if (document.readyState === "loading") {
         document.addEventListener("DOMContentLoaded", () => {
-            console.log("El DOM está completamente cargado.");
+            console.log("El DOM se cargó completamente.");
             initializeAccordions();
-            observeDynamicContent();
+            observeAccordions();
         });
     } else {
         console.log("El DOM ya estaba listo al cargar el script.");
         initializeAccordions();
-        observeDynamicContent();
+        observeAccordions();
     }
 })();
