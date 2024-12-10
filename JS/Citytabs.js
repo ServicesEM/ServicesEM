@@ -1,54 +1,43 @@
 (function () {
-    function openCity(evt, cityName) {
-        const tabcontents = document.getElementsByClassName("tabcontent");
-        const tablinks = document.getElementsByClassName("tablinks");
+    let initializedTabs = new WeakSet();
 
-        Array.from(tabcontents).forEach(content => {
-            content.style.display = "none";
+    function initializeTabs() {
+        const tabLinks = document.querySelectorAll(".tablinks");
+        const tabContents = document.querySelectorAll(".tabcontent");
+
+        tabLinks.forEach((tab) => {
+            if (initializedTabs.has(tab)) return;
+
+            tab.addEventListener("click", (event) => {
+                const cityName = event.target.getAttribute("data-city");
+                if (!cityName) return;
+
+                tabContents.forEach((content) => {
+                    content.style.display = "none";
+                });
+
+                tabLinks.forEach((link) => {
+                    link.classList.remove("clicked");
+                });
+
+                const activeContent = document.getElementById(cityName);
+                if (activeContent) activeContent.style.display = "block";
+
+                event.target.classList.add("clicked");
+                const defaultTab = document.getElementById("default");
+                if (defaultTab) defaultTab.classList.remove("clicked");
+            });
+
+            initializedTabs.add(tab);
         });
-
-        Array.from(tablinks).forEach(link => {
-            link.className = link.className.replace(" clicked", "");
-        });
-
-        const targetTab = document.getElementById(cityName);
-        if (targetTab) targetTab.style.display = "block";
-
-        const defaultTab = document.getElementById("default");
-        if (defaultTab) defaultTab.classList.remove("clicked");
-
-        evt.target.className += " clicked";
     }
 
-    function initializeCityTabs() {
-        const defaultButton = document.getElementById("default");
-        if (defaultButton) {
-            const defaultCity = defaultButton.getAttribute("onclick").match(/'(\d+)'/)[1];
-            document.getElementById(defaultCity).style.display = "block";
-        }
-    }
-
-    function observeCityTabs() {
-        const observer = new MutationObserver((_, observerInstance) => {
-            const tablinks = document.getElementsByClassName("tablinks");
-            if (tablinks.length) {
-                observerInstance.disconnect();
-                initializeCityTabs();
-            }
-        });
-
-        observer.observe(document.body, { childList: true, subtree: true });
-    }
+    const observer = new MutationObserver(() => initializeTabs());
+    observer.observe(document.body, { childList: true, subtree: true });
 
     if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => {
-            initializeCityTabs();
-            observeCityTabs();
-        });
+        document.addEventListener("DOMContentLoaded", initializeTabs);
     } else {
-        initializeCityTabs();
-        observeCityTabs();
+        initializeTabs();
     }
-
-    window.openCity = openCity;
 })();
