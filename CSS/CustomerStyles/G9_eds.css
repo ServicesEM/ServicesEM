@@ -19,19 +19,20 @@
 }
 /*Accordion Styles*/
 .G9accordion {
-    background-color: var(--color-primary);
-    color: var(--btn-textcolor) !important;
+    background-color: #E7E7E7;
+    color: #435464 !important;
     cursor: pointer !important;
 }
-.G9accordion.active,
+.G9accordion.active, 
 .G9accordion:hover {
-    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.3);
-    background: var(--color-secondary);
+    box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.3);
+    background: #435464;
     border: none;
+    color: #fff !important;
 }
-.G9accordion:after,
+.G9accordion:after, 
 .G9accordion.active:after {
-    color: var(--btn-textcolor)!important;
+    color: inherit;
     font-size: inherit;
 }
 /*Images Grid Styles*/
