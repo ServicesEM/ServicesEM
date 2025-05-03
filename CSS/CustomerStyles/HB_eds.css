@@ -1,0 +1,39 @@
+:root {
+    --color-primary: #0085AD;
+    --color-secondary: #71B2C9;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #0f1248;
+}
+/*Nav Button*/
+.HBbtn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 24px;
+}
+.HBbtn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+}
+/*Accordion Styles*/
+.HBaccordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.HBaccordion.active,
+.HBaccordion:hover {
+    background: var(--color-secondary);
+    border: none;
+}
+.HBaccordion:after,
+.HBaccordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.HBanchor_es a,
+.HBanchor_es {color: var(--color-primary)!important;}
+.HBanchor_es:hover a,
+.HBanchor_es:hover {color: var(--color-secondary)!important;}
