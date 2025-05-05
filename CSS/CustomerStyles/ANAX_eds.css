@@ -1,0 +1,39 @@
+:root {
+    --color-primary: #00146E;
+    --color-secondary: #0F2356;
+    --btn-textcolor: #ffffff;
+    --base-textcolor: #0f1248;
+}
+/*Nav Button*/
+.ANAXbtn_es {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+}
+.ANAXbtn_es:hover {
+    color: var(--btn-textcolor)!important;
+    background: var(--color-secondary)!important;
+    border: 1px solid var(--color-secondary)!important;
+}
+/*Accordion Styles*/
+.ANAXaccordion {
+    background-color: var(--color-primary);
+    color: var(--btn-textcolor) !important;
+    cursor: pointer !important;
+}
+.ANAXaccordion.active,
+.ANAXaccordion:hover {
+    background: var(--color-secondary);
+    border: none;
+}
+.ANAXaccordion:after,
+.ANAXaccordion.active:after {
+    color: var(--btn-textcolor)!important;
+    font-size: inherit;
+}
+/*Images Grid Styles*/
+.ANAXanchor_es a,
+.ANAXanchor_es {color: var(--color-primary)!important;}
+.ANAXanchor_es:hover a,
+.ANAXanchor_es:hover {color: var(--color-secondary)!important;}
